@@ -9,10 +9,10 @@ services:
       - key: PYTHON_VERSION
         value: 3.12.5
       - key: api_id
-        value: "28021723"
+        value: "29061977"
       - key: api_hash
-        value: "f6b0736c56e8544e6d55b7c4ef169a68"
+        value: "9519882b3dcb5dd995ca75247bd934ea"
       - key: bot_token
-        value: "8170387087:AAGIctE5k2wtCPgUyWSgTloNnShneEc8XuU"
+        value: "8033218814:AAEsdbr4YwMi9qqW1GehaiHj32bctl4nUGE"
       - key: auth_users
-        value: "[6312174113]"  # Replace with your Telegram ID
+        value: "[5371688792]"  # Replace with your Telegram ID

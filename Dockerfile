@@ -1,23 +1,27 @@
-
 # Python Based Docker
-FROM python:latest
+FROM python:3.12-slim
 
-# Installing Packages
-RUN apt update && apt upgrade -y
-RUN apt install git curl python3-pip ffmpeg aria2 -y
+# Installing system packages
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y git curl ffmpeg aria2 && \
+    rm -rf /var/lib/apt/lists/*
 
-# Updating Pip Packages
-RUN pip3 install -U pip
+# Upgrade pip
+RUN pip install --no-cache-dir -U pip
 
-# Copying Requirements
+# Copy requirements
 COPY requirements.txt /requirements.txt
 
-# Installing Requirements
-RUN cd /
-RUN pip3 install -U -r requirements.txt
-RUN mkdir /EXTRACTOR
-WORKDIR / EXTRACTOR
-COPY start.sh /start.sh
+# Install requirements
+RUN pip install --no-cache-dir -r /requirements.txt
 
-# Running MessageSearchBot
-CMD ["/bin/bash", "/start.sh"
+# Create working directory
+RUN mkdir /EXTRACTOR
+WORKDIR /EXTRACTOR
+
+# Copy start.sh
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+
+# Run bot
+CMD ["/bin/bash", "/start.sh"]

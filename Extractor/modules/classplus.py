@@ -300,5 +300,11 @@ async def extract_handler(client, message):
     session = requests.Session()
     await classplus_txt(message, session, user_id=None)
 
-app.start()
-idle()
+
+# ✅ Correct way to run app
+async def main():
+    await app.start()
+    await idle()
+
+if __name__ == "__main__":
+    asyncio.run(main())
